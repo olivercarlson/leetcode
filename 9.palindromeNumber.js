@@ -14,11 +14,9 @@ Input: 10
 Output: false
 Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
 
-RULES: NO CONVERSION TO STRING. (is this possible?)
-
 */
 
-// -121 false (121- != palindrome)
+// -121 false (121- != -121)
 // 10  false (01 != 10)
 // 121 true (121 == 121)
 
