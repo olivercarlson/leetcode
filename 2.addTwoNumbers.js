@@ -28,33 +28,33 @@ function ListNode(val, next) {
 	this.val = val === undefined ? 0 : val;
 	this.next = next === undefined ? null : next;
 }
-
 const addTwoNumbers = (l1, l2) => {
-	// check if l1.val exists and l2.val exists
-	// if l1.val + l2.val > 9
-	// if >9, new node = (l1 + l2 - 10) && carry = 1
-	// if <9, new node = (l1+l2)
+	// check if l1.val exists && l2.val exists && carry >0
+	// if >9, sum = (l1+l2 - 10) && carry = 1
+	// if <9, sum  = (l1+l2)
 	let carry = 0;
-	let l1val = l1.val;
-	let l2val = l2.val;
-	let l1next = l1.next;
-	let l2next = l2.next;
-	let sumVal = l1val + l2val + carry;
-	while (l1.next !== null && l2.next !== null && carry !== 0) {
+	let sumVal = 0;
+
+	let headNode = new ListNode('');
+	let currentNode = headNode;
+
+	while (l1 !== null || l2 !== null || sumVal > 0) {
+		if (l1.val !== null) {
+			sumVal += l1.val;
+			l1 = l1.next;
+		}
+		if (l2.val !== null) {
+			sumVal += l2.val;
+			l2 = l2.next;
+		}
 		if (sumVal > 9) {
 			carry = 1;
 			sumVal -= 10;
 		}
-		if (sumVal < 9) {
-			carry = 0;
-		}
+		currentNode.next = new ListNode(sumVal); // make new node with sum;
+		currentNode = currentNode.next; //
+		sum = carry;
+		carry = 0;
 	}
-	//
-	// if l1.val && l2.val don't exist = terminate && carry != 0
-	// while (l1.next !== null && l2.next !== null) {
-	//
-	// }
-	//
-
-	let output = new ListNode();
+	return headNode.next; // return pointer to first node with a value (i.e 0)
 };
