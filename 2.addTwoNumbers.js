@@ -31,19 +31,19 @@ function ListNode(val, next) {
 const addTwoNumbers = (l1, l2) => {
 	// check if l1.val exists && l2.val exists && carry >0
 	// if >9, sum = (l1+l2 - 10) && carry = 1
-	// if <9, sum  = (l1+l2)
+	// if <9, sum  = (l1+l2);
+	let headNode = new ListNode(0);
+	let currentNode = headNode;
+
 	let carry = 0;
 	let sumVal = 0;
 
-	let headNode = new ListNode('');
-	let currentNode = headNode;
-
 	while (l1 !== null || l2 !== null || sumVal > 0) {
-		if (l1.val !== null) {
+		if (l1 !== null) {
 			sumVal += l1.val;
 			l1 = l1.next;
 		}
-		if (l2.val !== null) {
+		if (l2 !== null) {
 			sumVal += l2.val;
 			l2 = l2.next;
 		}
@@ -53,7 +53,7 @@ const addTwoNumbers = (l1, l2) => {
 		}
 		currentNode.next = new ListNode(sumVal); // make new node with sum;
 		currentNode = currentNode.next; //
-		sum = carry;
+		sumVal = carry;
 		carry = 0;
 	}
 	return headNode.next; // return pointer to first node with a value (i.e 0)
