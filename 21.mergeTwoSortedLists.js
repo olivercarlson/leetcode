@@ -24,27 +24,26 @@ function ListNode(val = 0, next = null) {
 
 const mergeTwoLists = (l1, l2) => {
 	if (l1 === null || l2 === null) return l1 === null ? l2 : l1;
-
 	let l3 = new ListNode();
-	let currentNode = l3;
+	let curNode = l3;
 
 	if (l1.val < l2.val) {
-		currentNode.val = l1.val;
+		curNode.val = l1.val;
 		l1 = l1.next;
 	} else {
-		currentNode.val = l2.val;
+		curNode.val = l2.val;
 		l2 = l2.next;
 	}
 
 	while (l1 !== null || l2 !== null) {
 		if (l2 === null || (l1 !== null && l1.val < l2.val)) {
-			currentNode.next = l1;
+			curNode.next = l1;
 			l1 = l1.next;
 		} else {
-			currentNode.next = l2;
+			curNode.next = l2;
 			l2 = l2.next;
 		}
-		currentNode = currentNode.next;
+		curNode = curNode.next;
 	}
 	return l3;
 };
