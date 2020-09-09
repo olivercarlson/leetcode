@@ -3,96 +3,55 @@
  * @return {string}
  */
 
+// Works, but TLE (Time Limit Exceeded) -- TC: O(n^2)
 // const longestPalindrome = (s) => {
 // 	if (s.length <= 1) {
 // 		return s;
 // 	}
-// 	// track longest
-// 	let beginI = 0;
-// 	let endI = 0;
-// 	let longest = 0;
-// 	let arr = s.split('');
-// 	let i = 0;
-// 	let j = 1;
-// 	while (i < arr.length - 1 && j < arr.length - 1) {
-// 		// console.log('begin i ' + beginI);
-// 		// console.log('endi ' + endI);
-// 		if (
-// 			s.substring(i, j + 1).split('') ===
-// 			s
-// 				.substring(i, j + 1)
-// 				.split('')
-// 				.reverse()
-// 		) {
-// 			console.log('begin i ' + beginI);
-// 			console.log('endi ' + endI);
 
-// 			if (endI - beginI > j - i) {
-// 				longest = endI - beginI;
-// 			} else {
+// 	let arr = s.split('');
+// 	let longest = 0;
+// 	let begI = 0;
+// 	let endI = 0;
+
+// 	for (let i = 0; i < arr.length; i++) {
+// 		for (let j = 0; j < arr.length; j++) {
+// 			if (
+// 				arr
+// 					.slice(i, 1 + j)
+// 					.reverse()
+// 					.join('') === arr.slice(i, 1 + j).join('') &&
+// 				arr.slice(i, 1 + j).length > longest
+// 			) {
+// 				begI = i;
 // 				endI = j;
-// 				beginI = i;
-// 				longest = j - i;
-// 			}
-// 			j++;
-// 		} else {
-// 			i++;
-// 			if (i === j) {
-// 				j++;
+// 				longest = j - i + 1;
 // 			}
 // 		}
 // 	}
-
-// 	return s.substring(beginI, endI);
+// 	return arr.slice(begI, 1 + endI).join('');
 // };
 
 const longestPalindrome = (s) => {
-	if (s.length <= 1) {
-		return s;
-	}
-	let arr = s.split('');
-
-	let j = 1;
-	let i = 0;
-	let longest = 0;
-	let endI = 0;
-	let beginI = 0;
-
-	while (i < arr.length && j < arr.length) {
-		// console.log(arr.slice(i, 1 + j));
-		// console.log(arr.slice(i, 1 + j).reverse());
-
-		// console.log(
-		// 	arr.slice(i, 1 + j).toString() ===
-		// 		arr
-		// 			.slice(i, 1 + j)
-		// 			.reverse()
-		// 			.toString()
-		// );
-		if (
-			arr.slice(i, 1 + j).toString() ===
-			arr
-				.slice(i, 1 + j)
-				.reverse()
-				.toString()
-		) {
-			if (j - i > longest) {
-				endI = j;
-				beginI = i;
-				longest = j - i;
+	let max = '';
+	for (let i = 0; i < s.length; i++) {
+		for (let j = 0; j < 2; j++) {
+			let left = i;
+			let right = i + j;
+			console.log(`left is ${s[left]} right is ${s[right]}`);
+			while (s[left] && s[left] === s[right]) {
+				left--;
+				right++;
+			}
+			if (right - left - 1 > max.length) {
+				max = s.substring(left + 1, right);
 			}
 		}
-		j++;
-
-		// } else {
-		// 	i++;
-		// 	if (i === j) {
-		// 		j++;
-		// 	}
-		// }
 	}
-	return s.substring(beginI, 1 + endI);
+	return max;
 };
 
-console.log(longestPalindrome('babad')); // returns "bab" [0, 2]
-console.log(longestPalindrome('cbbd')); // returns "bb" or [1,2]
+console.log('output ' + longestPalindrome('babad')); // returns "bab" [0, 2]
+console.log('output ' + longestPalindrome('cbbd')); // returns "bb" or [1,2]
+// console.log('output ' + longestPalindrome('bb')); // returns "bb" or [1,2]
+// console.log('output ' + longestPalindrome('ccc')); // returns "ccc" or [1,2]
