@@ -27,12 +27,13 @@
  * @return {number}
  */
 const myAtoi = (str) => {
-	if (str === '' || str === ' ' || str === '-' || str === '+' || str.trim().length === 0) return 0;
-
-	//
+	// if (str === '' || str === ' ' || str === '-' || str === '+' || str.trim().length === 0) return 0;
+	str = str.trimLeft();
+	if (str[0] !== '+' || str[0] !== '-') return 0;
 	let isFirst = true;
 	let res = '';
-
+	// console.log('parseInt res is ' + parseInt(str));
+	return parseInt(str);
 	const checkRes = (n) => {
 		if (parseInt(n) > 2147483647) {
 			return 2147483647;
