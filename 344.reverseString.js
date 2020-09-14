@@ -8,6 +8,7 @@
 // 	return s.reverse();
 // };
 
+// solution #2: recursion (for fun).
 const reverseString = (s) => {
 	let temp;
 	function recurs(left, right) {
