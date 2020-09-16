@@ -11,14 +11,16 @@
 // Additional Constraints: NO extra memory
 
 // slow solution due to sort.
-const singleNumber = (nums) => {
-	nums.sort();
-	for (let i = 0; i < nums.length; i++) {
-		if (nums[i] !== nums[++i] && nums[i] !== nums[--i]) {
-			return nums[i];
-		}
-	}
-};
+// const singleNumber = (nums) => {
+// 	nums.sort();
+// 	for (let i = 0; i < nums.length; i++) {
+// 		if (nums[i] !== nums[++i] && nums[i] !== nums[--i]) {
+// 			return nums[i];
+// 		}
+// 	}
+// };
 
-// console.log(singleNumber([4, 1, 2, 1, 2])); // 4
-console.log(singleNumber([2, 2, 1, 2, 2, 1, 3, 4, 5, 4, 5, 1])); // 1
+//hon9g's bitwise solution.
+const singleNumber = (nums) => nums.reduce((acc, curr) => acc ^ curr);
+console.log(singleNumber([4, 1, 2, 1, 2])); // 4
+// console.log(singleNumber([2, 2, 1, 2, 2, 1, 3, 4, 5, 4, 5, 1])); // 1
