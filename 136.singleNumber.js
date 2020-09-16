@@ -2,23 +2,23 @@
 // Note:
 // Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
 
-// Input: [2, 2, 1];
-// Output: 1;
-
-// Input: [4, 1, 2, 1, 2];
-// Output: 4;
-
 /**
  * @param {number[]} nums
  * @return {number}
  */
 
 // Constraints: Must be TC O(n)
-// Additional Constraints: SC O(1)
+// Additional Constraints: NO extra memory
 
+// slow solution due to sort.
 const singleNumber = (nums) => {
-	//
-	//
-	//
-	//
+	nums.sort();
+	for (let i = 0; i < nums.length; i++) {
+		if (nums[i] !== nums[++i] && nums[i] !== nums[--i]) {
+			return nums[i];
+		}
+	}
 };
+
+// console.log(singleNumber([4, 1, 2, 1, 2])); // 4
+console.log(singleNumber([2, 2, 1, 2, 2, 1, 3, 4, 5, 4, 5, 1])); // 1
