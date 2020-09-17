@@ -20,10 +20,28 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
+
+// iterative
+// TC: O(n)
+// SC: O(1)
+
 const reverseList = (head) => {
-	//
-	//
-	//
+	if (head === null) return null;
+	let previous = null,
+		next = null;
+	while (head) {
+		next = head.next;
+		head.next = previous;
+		previous = head;
+		head = next;
+	}
+	return previous;
 };
 
-//
+//recursive
+const reverseList = (head, previous = null) => {
+	if (head === null) return previous;
+	let next = head.next;
+	head.next = previous;
+	return reverseList(next, head);
+};
