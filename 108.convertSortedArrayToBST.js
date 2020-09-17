@@ -14,12 +14,12 @@
  * @param {number[]} nums
  * @return {TreeNode}
  */
-const sortedArrayToBST = (nums) => {
-	if (!nums.length) return null;
-	const mid = Math.floor(nums.length / 2); // get halfway point of current nums
-	const root = new TreeNode(nums[mid]); // create new root.
 
-	root.left = sortedArrayToBST(nums.slice(0, mid));
-	root.right = sortedArrayToBST(nums.slice(mid + 1));
-	return root;
+const sortedArrayToBST = (nums) => {
+	if (!nums.length) return null; // fill in empty tree node with null
+	const mid = Math.floor(nums / 2); // find midpoint, rounded down.
+	let tree = new TreeNode(nums[mid]); // create new tree with root value = the value of mid missing from the left and right branches.
+	tree.left = sortedArrayToBST(nums.slice(0, mid));
+	tree.right = sortedArrayToBST(nums.slice(mid + 1));
+	return tree;
 };
