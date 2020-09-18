@@ -12,17 +12,23 @@
  * @return {number}
  */
 
+// const maxProfit = (prices) => {
+// 	let profit = 0;
+// 	for (let i = 0; i < prices.length; i++) {
+// 		if (prices[i + 1] > prices[i]) {
+// 			profit += prices[i + 1] - prices[i];
+// 		}
+// 	}
+// 	return profit;
+// };
+
 const maxProfit = (prices) => {
-	let profit = 0;
-	for (let i = 0; i < prices.length; i++) {
-		if (prices[i + 1] > prices[i]) {
-			profit += prices[i + 1] - prices[i];
-		}
-	}
-	return profit;
+	return prices.reduce((profit, curr, i, prices) => {
+		return prices[i + 1] > prices[i] ? (profit += prices[i + 1] - prices[i]) : profit;
+	}, 0);
 };
 
-// console.log(maxProfit([6, 1, 3, 2, 4, 7])); // 7
+console.log(maxProfit([6, 1, 3, 2, 4, 7])); // 7
 // console.log(maxProfit([7, 6, 4, 3, 1])); // 0
 // console.log(maxProfit([7, 1, 5, 3, 6, 4])); // 7
 //              Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
