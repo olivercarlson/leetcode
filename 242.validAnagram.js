@@ -18,33 +18,26 @@
  * @return {boolean}
  */
 
+// one liner.
+const isAnagram = (s, t) => {
+	return [...s].sort().join('') === [...t].sort().join('');
+};
+
+// faster solution
 const isAnagram = (s, t) => {
 	if (s.length !== t.length) return false;
-	// let s1 = s.split('').sort();
-	// let s2 = t.split('').sort();
 
-	const sToSortedUnicode = (s) => {
-		return s
-			.split('')
-			.map((el) => {
-				return String.fromCharCode(parseInt(el, 16));
-			})
-			.sort();
-	};
-
-	const s1 = sToSortedUnicode(s);
-	const s2 = sToSortedUnicode(t);
-
+	const s1 = s.split('').sort().join('');
+	const s2 = t.split('').sort().join('');
 	for (let i = 0; i < s.length; i++) {
 		if (s1[i] !== s2[i]) {
 			return false;
 		}
 	}
-
 	return true;
 };
-//
 
 // console.log(isAnagram('rat&', '&car')); // false
-console.log(isAnagram('*r&at', 'ta*r&')); // true
+// console.log(isAnagram('*r&at', 'ta*r&')); // true
 // console.log(isAnagram('anagram', 'nagaram')); // true;
+console.log(isAnagram('xxconlaelh', 'axncxlhjle')); // false
