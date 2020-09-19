@@ -17,12 +17,26 @@
 //     s consists only of uppercase English letters.
 //     s is between "A" and "FXSHRXW".
 
+// A - Z // 1 - 26
+// AA - AZ // 27 - 52
+// BA - BZ // 53 - 78
+// left - right should be increasing numerical value.
+
 /**
  * @param {string} s
  * @return {number}
  */
-var titleToNumber = function (s) {};
 
-console.log(titleToNumber('A')); // 1
+const titleToNumber = (s) => {
+	if (s.length === 1) return s.charCodeAt(0) - 64;
+	const arr = s.split('').reverse();
+
+	return arr.reduce((acc, currVal, i) => {
+		return (acc += (currVal.charCodeAt() - 64) * 26 ** i);
+	}, 0);
+};
+
+console.log(titleToNumber('B')); // 2
 console.log(titleToNumber('AB')); // 28
 console.log(titleToNumber('ZY')); // 701
+// console.log(`acc ${acc} currVal ${currVal}  i ${i}`);
