@@ -6,13 +6,25 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-var containsDuplicate = function (nums) {
-	let seen = [];
+// var containsDuplicate = function (nums) {
+// 	let seen = [];
+// 	for (let i = 0; i < nums.length; i++) {
+// 		if (seen.includes(nums[i])) {
+// 			return true;
+// 		} else {
+// 			seen.push(nums[i]);
+// 		}
+// 	}
+
+// 	return false;
+// };
+
+// faster than 99.9% Woo! memory <85.83%
+const containsDuplicate = (nums) => {
+	nums = nums.sort();
 	for (let i = 0; i < nums.length; i++) {
-		if (seen.includes(nums[i])) {
+		if (nums[i] === nums[1 + i]) {
 			return true;
-		} else {
-			seen.push(nums[i]);
 		}
 	}
 
