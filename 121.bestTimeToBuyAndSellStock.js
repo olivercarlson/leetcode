@@ -31,19 +31,16 @@
 // 	return max;
 // };
 
+// TC: O(n) SC: O(1)
 const maxProfit = (prices) => {
-	let prevLow;
-
+	let prevLow = prices[0];
 	return prices.reduce((max, curr, i) => {
-		console.log(`prevLow is ${prevLow} and curr is ${curr}`);
-		if (prevLow === undefined || prevLow >= curr) prevLow = curr;
-		if (prevLow < curr && curr - prevLow > max) {
-			max = curr - prevLow;
-		}
+		prevLow = Math.min(prevLow, curr);
+		max = Math.max(curr - prevLow, max);
 		return max;
 	}, 0);
 };
 
 // console.log(maxProfit([7, 1, 5, 3, 6, 4])); // 5
 // console.log(maxProfit([7, 6, 4, 3, 1])); // 0
-console.log(maxProfit([2, 1, 2, 1, 0, 1, 2])); // 2
+// console.log(maxProfit([2, 1, 2, 1, 0, 1, 2])); // 2
