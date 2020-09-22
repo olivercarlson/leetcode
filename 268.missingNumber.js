@@ -18,16 +18,24 @@
 // Note:
 // Your algorithm should run in linear runtime complexity. Could you implement it using only constant extra space complexity?
 
+// const missingNumber = (nums) => {
+// 	let sorted = nums.sort((a, b) => a - b);
+// 	if (sorted.length === 1) {
+// 		if (sorted[0] === 0) return 1;
+// 		if (sorted[0] === 1) return 0;
+// 	}
+// 	for (let i = 0; i < nums.length; i++) {
+// 		if (sorted[0] !== 0) return 0;
+// 		if (sorted[i] + 1 !== sorted[i + 1] || !sorted[i + 1]) return sorted[i] + 1;
+// 	}
+// };
+
 const missingNumber = (nums) => {
-	let sorted = nums.sort((a, b) => a - b);
-	if (sorted.length === 1) {
-		if (sorted[0] === 0) return 1;
-		if (sorted[0] === 1) return 0;
-	}
-	for (let i = 0; i < nums.length; i++) {
-		if (sorted[0] !== 0) return 0;
-		if (sorted[i] + 1 !== sorted[i + 1] || !sorted[i + 1]) return sorted[i] + 1;
-	}
+	let len = nums.length;
+	if (!len) return 0;
+	let sum = len * ((len + 1) / 2);
+	let trueSum = nums.reduce((acc, curr) => acc + curr);
+	return sum - trueSum;
 };
 
 // console.log(missingNumber([9, 6, 4, 2, 3, 5, 7, 0, 1])); // 8
