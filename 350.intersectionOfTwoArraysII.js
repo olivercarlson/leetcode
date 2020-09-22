@@ -14,21 +14,40 @@
  * @param {number[]} nums2
  * @return {number[]}
  */
+
+// TC: 2 * O(n) SC: 2 * O(n)
+// const intersect = (nums1, nums2) => {
+// 	const res = [];
+// 	const hashMap = {};
+
+// 	for (let i = 0; i < nums1.length; i++) {
+// 		if (hashMap[nums1[i]]) {
+// 			hashMap[nums1[i]] += 1;
+// 		} else {
+// 			hashMap[nums1[i]] = 1;
+// 		}
+// 	}
+// 	for (let i = 0; i < nums2.length; i++) {
+// 		if (hashMap[nums2[i]] > 0) {
+// 			res.push(nums2[i]);
+// 			hashMap[nums2[i]] -= 1;
+// 		}
+// 	}
+// 	return res;
+// };
+
+// Using the actual Map constructor
 const intersect = (nums1, nums2) => {
 	const res = [];
-	const hashMap = {};
+	const hashMap = new Map();
 
-	for (let i = 0; i < nums1.length; i++) {
-		if (hashMap[nums1[i]]) {
-			hashMap[nums1[i]] += 1;
-		} else {
-			hashMap[nums1[i]] = 1;
-		}
+	for (let n of nums1) {
+		hashMap.set(n, 1 + hashMap.get(n) || 1);
 	}
-	for (let i = 0; i < nums2.length; i++) {
-		if (hashMap[nums2[i]] > 0) {
-			res.push(nums2[i]);
-			hashMap[nums2[i]] -= 1;
+	for (let n of nums2) {
+		if (hashMap.get(n)) {
+			res.push(n);
+			hashMap.set(n, hashMap.get(n) - 1);
 		}
 	}
 	return res;
