@@ -42,4 +42,3 @@ const isSymmetric = (root) => {
 	return isMirror(root, root);
 };
 return t1.val === t2.val && isMirror(t1.left, t2.right) && isMirror(t1.right, t2.left);
-return t1.val === t2.val && isMirror(t1.left, t2.right) && (t1.right, t2.left);
