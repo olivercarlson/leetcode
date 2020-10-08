@@ -10,11 +10,30 @@
  * @param {number} n
  * @return {boolean}
  */
+const isHappy = (n, dict = {}) => {
+	if (n <= 0) return false;
+	let arr = n.toString().split('');
+	const getSumOfSquares = (arr) => {
+		return arr.reduce((acc, el) => {
+			return (acc += el ** 2);
+		}, 0);
+	};
+	let res = getSumOfSquares(arr);
+	if (dict[res]) return false;
+	if (res === 1) {
+		return true;
+	} else {
+		dict[res] = res;
+		return isHappy(res, dict);
+	}
+};
+// console.log(isHappy(19));
+console.log(isHappy(2));
 
 // Input: 19
 // Output: true
 // Explanation:
-// 12 + 92 = 82
-// 82 + 22 = 68
-// 62 + 82 = 100
-// 12 + 02 + 02 = 1
+// 1^2 + 9^2 = 82
+// 8^2 + 2^2 = 68
+// 6^2 + 8^2 = 100
+// 1^2 + 0^2 + 0^2 = 1
