@@ -11,33 +11,6 @@
  * @return {boolean}
  */
 
-const isHappy = (n) => {
-	return checkIsHappy(n);
-};
-
-const checkIsHappy = (n, lookup = {}) => {
-	if (n == 1) {
-		return true;
-	}
-	if (n in lookup) {
-		return false;
-	} else {
-		lookup[n] = 1;
-	}
-	return checkIsHappy(sumOfSquares(n), lookup);
-};
-
-const sumOfSquares = (s) => {
-	let sum = 0;
-	while (s < 0) {
-		let d = s % 10;
-		sum = sum + d * d;
-		s = Math.floor(s / 10);
-	}
-	return sum;
-};
-
-console.log(isHappy(19)); // true;
 // Input: 19
 // Output: true
 // Explanation:

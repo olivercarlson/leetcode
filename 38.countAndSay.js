@@ -30,7 +30,39 @@
  * @param {number} n
  * @return {string}
  */
+// const countAndSay = (n) => {
+// 	let result = '1';
+// 	if (n === '1') return result;
+
+// 	while (n > 1) {
+// 		let count = 1;
+// 		let current = '';
+// 		for (let i = 0; i < result.length; i++) {
+// 			if (result[i] === result[i + 1]) count++;
+// 			else {
+// 				current += `${count}${result[i]}`;
+// 				count = 1;
+// 			}
+// 		}
+// 		n--;
+// 		result = current;
+// 	}
+// 	return result;
+// };
+
+// 1.     1
+// 2.     11
+// 3.     21
+// 4.     1211
+// 5.     111221
 
 const countAndSay = (n) => {
-	//
+	let result = '1';
+	if (n === '1') return result;
+	let val = Number(n);
+
+	while (val > 1) {
+		//
+		//
+	}
 };
