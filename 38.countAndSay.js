@@ -30,25 +30,12 @@
  * @param {number} n
  * @return {string}
  */
-// const countAndSay = (n) => {
-// 	let result = '1';
-// 	if (n === '1') return result;
-
-// 	while (n > 1) {
-// 		let count = 1;
-// 		let current = '';
-// 		for (let i = 0; i < result.length; i++) {
-// 			if (result[i] === result[i + 1]) count++;
-// 			else {
-// 				current += `${count}${result[i]}`;
-// 				count = 1;
-// 			}
-// 		}
-// 		n--;
-// 		result = current;
-// 	}
-// 	return result;
-// };
+const countAndSay = (n) => {
+	//
+	//
+	//
+	//
+};
 
 // 1.     1
 // 2.     11
