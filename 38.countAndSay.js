@@ -31,10 +31,20 @@
  * @return {string}
  */
 const countAndSay = (n) => {
-	//
-	//
-	//
-	//
+	let res = '1';
+	while (--n) {
+		let ns = '';
+		for (let i = 0; i < res.length; i++) {
+			let count = 1;
+			while (res[i + 1] && res[i] == res[i + 1]) {
+				i++;
+				count++;
+			}
+			ns += count + '' + res[i];
+		}
+		res = ns;
+	}
+	return res;
 };
 
 // 1.     1
@@ -43,13 +53,4 @@ const countAndSay = (n) => {
 // 4.     1211
 // 5.     111221
 
-const countAndSay = (n) => {
-	let result = '1';
-	if (n === '1') return result;
-	let val = Number(n);
-
-	while (val > 1) {
-		//
-		//
-	}
-};
+console.log(countAndSay(6));
