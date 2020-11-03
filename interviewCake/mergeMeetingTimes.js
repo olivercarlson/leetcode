@@ -32,6 +32,8 @@
  * {returns} Array<Object> times when everyone is available:
  */
 
+// TC: O(n log n)
+// SC: O(n)
 const mergeRanges = (meetings) => {
 	const meetingsCopy = JSON.parse(JSON.stringify(meetings));
 	const sortedMeetings = meetingsCopy.sort((a, b) => a.startTime - b.startTime);
