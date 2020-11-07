@@ -1,9 +1,9 @@
 // Decode the message by reversing the words:
 
 // cheating:
-const reverseWords = (arrayOfChars) => {
-	return arrayOfChars.join('').split(' ').reverse();
-};
+// const reverseWords = (arrayOfChars) => {
+// 	return arrayOfChars.join('').split(' ').reverse();
+// };
 
 // brute force:
 // const reverseWords = (arrayOfChars) => {
@@ -23,14 +23,14 @@ const reverseWords = (arrayOfChars) => {
 // };
 
 // O(1) space AKA In place swap:
-// const reverseWords = (arrayOfChars) => {
-// 	if (arrayOfChars <= 1) return arrayOfChars;
+const reverseWords = (arrayOfChars) => {
+	if (arrayOfChars <= 1) return arrayOfChars;
 
-// 	let indexLeft = 0,
-// 		indexRight = arrayOfChars.length;
+	let indexLeft = 0,
+		indexRight = arrayOfChars.length;
 
-// 	return arrayOfChars;
-// };
+	return arrayOfChars;
+};
 
 const message = ['c', 'a', 'k', 'e', ' ', 'p', 'o', 'u', 'n', 'd', ' ', 's', 't', 'e', 'a', 'l'];
 console.log(reverseWords(message).join(' '));
